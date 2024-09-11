@@ -1,0 +1,11 @@
+const mongoose = require("mongoose");
+mongoose.Promise = global.Promise;
+const db = {};
+db.mongoose = mongoose;
+db.url = process.env.MONGODB_URL;
+db.user = require("./user.model")(mongoose);
+db.role = require("./role.model");
+db.survey_forms = require("./survey_forms.model")(mongoose);
+db.survey_forms_response = require("./survey_forms_response.model")(mongoose);
+db.ROLES = ["user", "admin"];
+module.exports = db;
